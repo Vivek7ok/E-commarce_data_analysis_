@@ -2,18 +2,18 @@
 Analyzing sales, customer behavior, delivery performance, and seller/product trends to support data-driven business decisions using SQL, Python, and Power BI.
 
 📌 Table of Contents
-- Overview
-- Business Problem
-- Dataset
-- Tools & Technologies
-- Project Structure
-- Data Cleaning & Preparation
-- Exploratory Data Analysis (EDA)
-- Research Questions & Key Findings
-- Dashboard
-- How to Run This Project
-- Final Recommendations
-- Author & Contact
+- [Overview](#overview)
+- [Business Problem](#business-problem)
+- [Dataset](#dataset)
+- [Tools & Technologies](#tools--technologies)
+- [Project Structure](#project-structure)
+- [Data Cleaning & Preparation](#data-cleaning--preparation)
+- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+- [Research Questions & Key Findings](#research-questions--key-findings)
+- [Dashboard](#dashboard)
+- [How to Run This Project](#how-to-run-this-project)
+- [Final Recommendations](#final-recommendations)
+- [Author & Contact](#author--contact)
 
 ## Overview
 This project analyzes a multi-table e-commerce dataset (customers, orders, order items, payments, products, reviews, and sellers) to uncover insights on revenue, customer spending, delivery performance, and seller/product performance. A complete data pipeline was built: **Python** for cleaning and EDA, **PostgreSQL** for business-question SQL analysis, and **Power BI** for an interactive dashboard.
