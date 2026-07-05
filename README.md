@@ -42,10 +42,8 @@ Understanding how customers, sellers, and products drive revenue is critical for
 ```
 E-commarce_data_analysis_/
 │
-├── README.md
-├── Data_zip.zip
 │
-├── Data/                        # Raw CSV datasets
+├── Data/                      
 │   ├── customers.csv
 │   ├── orders.csv
 │   ├── order_items.csv
@@ -72,9 +70,11 @@ E-commarce_data_analysis_/
 │   └── 08_Advanced_Window_Functions.sql
 │
 ├── ER Digram/                   # Database schema
-│   └── Database_Schema.png
+│   ├── Database_Schema.drawio.xml
+│   ├── Database_Schema.png
+│   └── Database_Schema.svg
 │
-├──  Power bi/
+├──  Power bi/                   # Dashbored
 │   ├── E-commerce Analysis.pbix
 │   ├── Executive.png
 │   ├── Sales.png
@@ -85,6 +85,9 @@ E-commarce_data_analysis_/
 │   ├── Schema.png
 │   └── Logo.png
 │
+├── Project_Report.docx          # Report
+├── Data_zip.zip                 # Zip file of data
+├── README.md                    # Readme 
 └── Work Flow.png                # End-to-end project workflow
 ```
 
