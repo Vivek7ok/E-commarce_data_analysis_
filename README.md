@@ -42,7 +42,7 @@ Understanding how customers, sellers, and products drive revenue is critical for
 ```
 E-commarce_data_analysis_/
 │
-├── Data/                      
+├── Data/                      # Row data in csv formate
 │   ├── customers.csv
 │   ├── orders.csv
 │   ├── order_items.csv
