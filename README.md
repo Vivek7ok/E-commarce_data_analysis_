@@ -85,7 +85,6 @@ E-commarce_data_analysis_/
 │   └── Logo.png
 │
 ├── Project_Report.docx          # Report
-├── Data_zip.zip                 # Zip file of data
 ├── README.md                    # Readme 
 └── Work Flow.png                # End-to-end project workflow
 ```
