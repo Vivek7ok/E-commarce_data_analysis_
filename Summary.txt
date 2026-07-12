@@ -1,0 +1,204 @@
+====================================================================
+E-COMMERCE SALES & CUSTOMER ANALYTICS
+Project Summary Report
+Repository: https://github.com/Vivek7ok/E-commarce_data_analysis
+Author: Vivek
+====================================================================
+
+1. OBJECTIVE
+--------------------------------------------------------------------
+The goal of this project is to analyze a real-world e-commerce
+dataset (customers, orders, payments, products, reviews, and
+sellers) to understand business performance and support
+data-driven decisions in the areas of:
+
+- Overall sales and revenue performance
+- Customer behavior and spending patterns
+- Product and category performance
+- Seller performance and geographic distribution
+- Delivery efficiency and order fulfillment
+- Customer satisfaction (reviews) and payment behavior
+
+The end result is a complete pipeline that takes raw, messy data
+all the way through to a decision-ready Power BI dashboard.
+
+
+2. PROCESS OF WORK (STEP BY STEP)
+--------------------------------------------------------------------
+
+STEP 1 - DATA COLLECTION
+Raw data was sourced as 8 related CSV files (customers, orders,
+order_items, payments, products, reviews, sellers, and a
+category-name translation file), based on the public Brazilian
+e-commerce dataset (Olist, via Kaggle).
+
+STEP 2 - DATA CLEANING (Python / Pandas)
+File: Python/Cleaing.py
+- Loaded all 8 raw datasets using Pandas
+- Orders table: missing order_approved_at,
+  order_delivered_carrier_date, and order_delivered_customer_date
+  were forward-filled; all date columns were converted from text
+  to proper datetime format
+- Reviews table: missing review_comment_title and
+  review_comment_message were filled with placeholder text
+  ("No Title" / "No Message") so the numeric review score was
+  never lost
+- Products table: missing product_category_name was filled with
+  "Missing"; remaining missing values were filled with 0; numeric
+  columns (description length, photo count, weight, dimensions)
+  were converted to integer type
+- Cleaned datasets were exported to CSV, ready for loading into
+  the database
+
+STEP 3 - DATABASE DESIGN & LOADING (PostgreSQL)
+File: Python/Insert.py
+- Cleaned CSV files were loaded into a PostgreSQL database
+- A relational schema was built with proper primary keys
+  (customer_id, order_id, product_id, seller_id, review_id) and
+  foreign key relationships linking customers -> orders ->
+  order_items -> products/sellers, plus payments and reviews
+  linked to orders
+- The full schema is documented as an ER diagram in the
+  "ER Digram" folder
+
+STEP 4 - SQL BUSINESS ANALYSIS (PostgreSQL)
+Folder: Sql/ (8 scripts, 01 to 08)
+Over 30 business questions were answered using SQL, covering:
+  01_KPI_Analysis            - total revenue, total orders, AOV,
+                                monthly revenue/order trends
+  02_Customer_Analysis       - top states/cities, top spenders,
+                                average spend, repeat customers
+  03_Product_Analysis        - top categories by revenue and
+                                volume, pricing, review scores
+  04_Seller_Analysis         - top sellers, seller states,
+                                seller review performance
+  05_Order_Analysis          - order status breakdown, delivery
+                                time, cancellations by month
+  06_Payment_Analysis        - payment type revenue share,
+                                payment type vs review score
+  07_Review_Analysis         - review score distribution,
+                                price vs review correlation
+  08_Advanced_Window_Functions - running totals, highest revenue
+                                month, top 10 orders by value
+
+STEP 5 - EXPLORATORY DATA ANALYSIS (Python)
+File: Python/EDA.py / EDA.ipynb
+- Additional exploration and visualization in Python (Pandas,
+  Matplotlib) to sanity-check the SQL findings and look at
+  distributions, outliers, and correlations before building the
+  dashboard
+
+STEP 6 - DASHBOARD DEVELOPMENT (Power BI)
+File: Power bi/E-commarce Analysis.pbix
+A 6-page interactive dashboard was built:
+  1. Executive Summary - total revenue, total orders, customer
+     cities, total sellers, average review score, revenue by
+     quarter, revenue by payment type, order status breakdown
+  2. Sales - revenue trends, sales by category, orders by month,
+     revenue share by payment type
+  3. Customers - customers by city/state, average customer
+     spend, repeat customers, revenue by state
+  4. Products - category-level revenue and volume performance
+  5. Delivery - delivery time and fulfillment performance by
+     state
+  6. Reviews - review score distribution and satisfaction trends
+The dashboard uses year-level filters (2016/2017/2018) and
+consistent cross-page navigation.
+
+STEP 7 - DOCUMENTATION
+- README.md, ER diagram, and workflow diagram were created to
+  document the schema, process, and findings for anyone
+  reviewing the repository.
+
+
+3. TOOLS & TECHNOLOGIES USED
+--------------------------------------------------------------------
+- Python (Pandas, NumPy, Matplotlib) - data cleaning & EDA
+- PostgreSQL - relational database & SQL analysis
+- Power BI - interactive dashboard
+- Excel - supplementary checks
+- Git & GitHub - version control and hosting
+
+
+4. KEY BUSINESS FINDINGS (based on actual data)
+--------------------------------------------------------------------
+- Total revenue: R$16.0 million across 99,441 orders
+- Average order value (AOV): R$154.10
+- Customer base: 96,096 unique customers served by 3,095 sellers
+- 97% of orders (96,478) were successfully delivered; 625 were
+  canceled
+- Sao Paulo (SP) leads with 41,746 customers - more than 3x the
+  next state (Rio de Janeiro, 12,852)
+- Only ~3% of customers (2,997 of 96,096) placed more than one
+  order - repeat purchase behavior is rare
+- Top 5 revenue categories: bed_bath_table, health_beauty,
+  computers_accessories, furniture_decor, watches_gifts - these
+  same categories also lead in items sold
+- Seller base is concentrated in Sao Paulo state (1,849 of 3,095
+  sellers, about 60%)
+- Average delivery time is 12 days 13 hours; northern states
+  (Roraima, Amapa, Amazonas) take more than double the national
+  average (26-29 days)
+- Cancellations spike in specific months - August 2018 (84) and
+  February 2018 (73) were the worst
+- Credit card accounts for 78.3% of revenue, followed by boleto
+  (17.9%), voucher (2.4%), and debit card (1.4%)
+- Overall average review score is 4.09 out of 5
+- Price has almost no correlation with review score
+  (correlation approx -0.004) - charging more does not lead to
+  better or worse reviews
+
+
+5. BUSINESS RECOMMENDATIONS
+--------------------------------------------------------------------
+1. IMPROVE CUSTOMER RETENTION
+   Only about 3% of customers reorder. Introduce loyalty programs,
+   post-purchase email/offer campaigns, and reminders to convert
+   one-time buyers into repeat customers.
+
+2. FIX DELIVERY TIMES IN THE NORTH
+   Roraima, Amapa, and Amazonas have delivery times more than
+   double the national average. Prioritize carrier partnerships
+   or regional fulfillment hubs in these states.
+
+3. INVESTIGATE SEASONAL CANCELLATION SPIKES
+   August and February show unusually high cancellations.
+   Review staffing, inventory, and carrier capacity around these
+   periods to prevent repeat issues.
+
+4. DOUBLE DOWN ON TOP-PERFORMING CATEGORIES
+   Bed/bath, health & beauty, and computer accessories drive the
+   most revenue and volume. Prioritize these in promotions,
+   homepage placement, and inventory planning.
+
+5. REDUCE SELLER CONCENTRATION RISK
+   About 60% of sellers are based in Sao Paulo. Recruit and
+   support sellers in other states to reduce single-region
+   dependency and improve delivery times nationally.
+
+6. EXPLORE HIGH-VALUE, LOW-VOLUME MARKETS
+   States like Paraiba show a high average order value despite
+   low order volume - a good target for focused marketing to
+   grow volume in an already high-spending market.
+
+7. FOCUS ON SERVICE QUALITY, NOT DISCOUNTING
+   Since price does not affect review scores, invest in
+   delivery speed and order accuracy rather than price cuts to
+   improve customer satisfaction.
+
+
+6. CONCLUSION
+--------------------------------------------------------------------
+This project demonstrates a complete, real-world data analytics
+workflow: raw data was cleaned in Python, structured in a
+PostgreSQL database, analyzed using SQL to answer over 30
+business questions, and visualized in an interactive Power BI
+dashboard. The findings point to a small number of high-impact
+actions - improving retention, fixing regional delivery times,
+and diversifying the seller base - that could meaningfully grow
+revenue and improve efficiency without changing the underlying
+product or market.
+
+====================================================================
+End of Report
+====================================================================
