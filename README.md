@@ -19,7 +19,7 @@ Analyzing sales, customer behavior, delivery performance, and seller/product tre
 This project analyzes a multi-table e-commerce dataset (customers, orders, order items, payments, products, reviews, and sellers) to uncover insights on revenue, customer spending, delivery performance, and seller/product performance. A complete data pipeline was built: **Python** for cleaning and EDA, **PostgreSQL** for business-question SQL analysis, and **Power BI** for an interactive dashboard.
 
 ## Objective
-The objective of this research is to learn about the processes through which the e-commerce company makes profit. By analyzing its sales, customers, goods offered, and orders, we try to find out what is done well and what could be improved. The findings will be helpful for the company to increase sales.
+The goal of this project is to find ways to grow the business and increase revenue. We analyze sales, customers, products, and orders to see what is working well and what needs improvement. These insights help make better business decisions, improve customer satisfaction, and increase profits.
 
 ## Dataset
 - link - https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
